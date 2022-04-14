@@ -1,0 +1,38 @@
+/* pages/editor/editor.wxss */
+
+.template-list-text {
+    display: block;
+    background-color: #000;
+    color: #fff;
+    position: absolute;
+    bottom: 0%;
+    top: 0%;
+    left: 0;
+    width: 94%;
+    text-align: center;
+    font-size: 100rpx;
+    padding: 10rpx;
+    opacity: 0.5;
+}
+
+.template-list {
+    display:inline-block;
+}
+
+.video-block {
+    margin-top: 20rpx;
+    display: flex;
+    white-space: nowrap;
+}
+
+.template-list-info {
+    float: left;
+    margin-left: 10rpx;
+    margin-top: 10rpx;
+    position: relative;
+}
+
+.template-list-img {
+    width: 100rpx;
+    height: 100rpx;
+}

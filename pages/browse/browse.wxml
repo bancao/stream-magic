@@ -1,0 +1,59 @@
+<!--pages/browse/browse.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">人物介绍</view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">分享素材</view>
+  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">美食天地</view>
+</view>
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" style="height: {{anchor.deviceHeight + 'px'}} ">
+  <swiper-item class="all">
+    <view class="anchor-top"></view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="list">全部内容列表</view>
+    <view class="anchor-bottom"></view>
+  </swiper-item>
+  <swiper-item class="clairy">
+    <view class="anchor-top"></view>
+    <scroll-view class="video-list" style="height: 60vh" scroll-y scroll-with-animation="true">
+      <block wx:for="{{items}}" wx:key="item">
+        <view class="video-list" data-index="{{index}}" bindtap="switchSelect">
+          <navigator url="/pages/photo/photo?id={{item.id}}">
+            <view wx:if="{{item.selectIdx > 0}}" class="video-list-info item-selected" index="{{index}}">
+              <image  class="video-list-photo" src="{{item.imageUrl}}" />
+              <text class="video-list-desc">{{item.content}}</text>
+              <text class="video-list-selected-text">{{item.selectIdx}}</text>
+            </view>
+            <view wx:if="{{item.selectIdx == None || item.selectIdx <= 0}}" class="video-list-info" index="{{index}}">
+              <image  class="video-list-photo" src="{{item.imageUrl}}" />
+              <text class="video-list-desc">{{item.content}}</text>
+            </view>
+            
+          </navigator>
+        </view>
+      </block>
+    </scroll-view>
+    <scroll-view class="video-list-selected">
+      <block wx:for="{{selectItems}}" wx:key="item">
+        <view class="video-list-selected">
+          <navigator url="/pages/photo/photo?id={{item.id}}">
+            <view class="video-list-info-selected" index="{{index}}">
+              <image class="video-list-photo-selected" src="{{item.imageUrl}}" />
+            </view>
+          </navigator>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="save-area">
+      <text>已经选择素材大小</text> <text class="btn blue" bindtap="startEditor">匹配特效</text>
+    </view>
+    <view class="anchor-bottom"></view>
+  </swiper-item>
+</swiper>

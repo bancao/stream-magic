@@ -1,0 +1,19 @@
+<!--pages/editor/editor.wxml-->
+<view class="video-wrapper">
+    <video id="myVideo" src="{{videoUrl}}" binderror="videoErrorCallback" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls picture-in-picture-mode="{{['push', 'pop']}}" bindenterpictureinpicture='bindVideoEnterPictureInPicture' bindleavepictureinpicture='bindVideoLeavePictureInPicture'></video>
+  </view>
+  <scroll-view scroll-x class="video-block" >
+    <block wx:for="{{templates}}" wx:key="item">
+        <view class="template-list">
+          <navigator url="#">
+            <view class="template-list-info" data-index="{{index}}" bindtap="switchTemplate">
+              <image class="template-list-img" src="{{item.imageUrl}}" />
+              <view wx:if="{{item.select}}">
+                <text class="template-list-text"></text>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </block>
+  </scroll-view>
+  <button catchtap="handleDownload" data-link="{{new_url}}">保存视频</button>
